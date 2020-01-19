@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name IEEE-Clock-Charlie)(type KiCad)(uri D:/Github/IEEE-Clock-Charlie/IEEE-Clock-Charlie.pretty)(options "")(descr ""))
+)

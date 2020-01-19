@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name Arduino-nano-33)(type Legacy)(uri D:/Github/Nano_33/lib/Arduino-nano-33.lib)(options "")(descr ""))
+  (lib (name New_Library_0)(type Legacy)(uri ${KIPRJMOD}/New_Library_0.lib)(options "")(descr ""))
+  (lib (name arduino_nano_v3.x)(type Legacy)(uri ${KIPRJMOD}/arduino_nano_v3.x.lib)(options "")(descr ""))
+  (lib (name Ada_charlie_driver)(type Legacy)(uri ${KIPRJMOD}/Ada_charlie_driver.lib)(options "")(descr ""))
+  (lib (name ADA_CHARLIE)(type Legacy)(uri ${KIPRJMOD}/ADA_CHARLIE.lib)(options "")(descr ""))
+)

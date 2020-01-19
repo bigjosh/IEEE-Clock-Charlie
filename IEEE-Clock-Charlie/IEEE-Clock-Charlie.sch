@@ -1,0 +1,206 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:Arduino_Nano_v3.x A?
+U 1 1 5E1FF514
+P 5550 5700
+F 0 "A?" H 5550 4611 50  0000 C CNN
+F 1 "Arduino_Nano_v3.x" H 5550 4520 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 5700 4750 50  0001 L CNN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 5550 4700 50  0001 C CNN
+	1    5550 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L ADA_CHARLIE:ADA_CHARLIE U?
+U 1 1 5E23BD19
+P 5600 2850
+F 0 "U?" H 5600 3815 50  0000 C CNN
+F 1 "ADA_CHARLIE" H 5600 3724 50  0000 C CNN
+F 2 "MODULE" H 5600 2850 50  0001 C CNN
+F 3 "DOCUMENTATION" H 5600 2850 50  0001 C CNN
+	1    5600 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L ADA_CHARLIE:ADA_CHARLIE U?
+U 1 1 5E23D5CF
+P 8400 2800
+F 0 "U?" H 8400 3765 50  0000 C CNN
+F 1 "ADA_CHARLIE" H 8400 3674 50  0000 C CNN
+F 2 "MODULE" H 8400 2800 50  0001 C CNN
+F 3 "DOCUMENTATION" H 8400 2800 50  0001 C CNN
+	1    8400 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 3950 10000 3200
+Wire Wire Line
+	10000 3200 9150 3200
+Wire Wire Line
+	10100 4050 10100 3100
+Wire Wire Line
+	10100 3100 9150 3100
+Wire Wire Line
+	6350 3250 7350 3250
+Wire Wire Line
+	7350 3250 7350 3950
+Wire Wire Line
+	6350 3150 7450 3150
+Wire Wire Line
+	7450 3150 7450 4050
+Connection ~ 7450 4050
+Wire Wire Line
+	7450 4050 10100 4050
+Wire Wire Line
+	7450 6100 7450 4050
+Wire Wire Line
+	6050 6100 7450 6100
+Wire Wire Line
+	6050 6200 7350 6200
+Wire Wire Line
+	4600 3100 4600 4050
+Wire Wire Line
+	4600 4050 7450 4050
+Wire Wire Line
+	4500 3200 4500 3950
+Wire Wire Line
+	4500 3950 4750 3950
+Connection ~ 7350 3950
+Wire Wire Line
+	7350 3950 7350 6200
+Wire Wire Line
+	7350 3950 10000 3950
+Wire Wire Line
+	4400 3300 4400 4250
+Wire Wire Line
+	4400 4250 6450 4250
+Wire Wire Line
+	9500 4250 9500 3300
+Wire Wire Line
+	9500 3300 9150 3300
+Wire Wire Line
+	6350 3350 6450 3350
+Wire Wire Line
+	6450 3350 6450 4250
+Connection ~ 6450 4250
+Wire Wire Line
+	6450 4250 7550 4250
+Wire Wire Line
+	9200 4350 9200 3400
+Wire Wire Line
+	9200 3400 9150 3400
+Wire Wire Line
+	5750 4350 5750 4700
+Connection ~ 5750 4350
+Wire Wire Line
+	5750 4350 6350 4350
+$Comp
+L power:GND #PWR?
+U 1 1 5E24D885
+P 4400 4550
+F 0 "#PWR?" H 4400 4300 50  0001 C CNN
+F 1 "GND" H 4405 4377 50  0000 C CNN
+F 2 "" H 4400 4550 50  0001 C CNN
+F 3 "" H 4400 4550 50  0001 C CNN
+	1    4400 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E24E445
+P 5600 7150
+F 0 "#PWR?" H 5600 6900 50  0001 C CNN
+F 1 "GND" H 5605 6977 50  0000 C CNN
+F 2 "" H 5600 7150 50  0001 C CNN
+F 3 "" H 5600 7150 50  0001 C CNN
+	1    5600 7150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 6700 5650 7050
+Wire Wire Line
+	5650 7050 5600 7050
+Wire Wire Line
+	5600 7050 5600 7150
+Wire Wire Line
+	5550 6700 5550 7050
+Wire Wire Line
+	5550 7050 5600 7050
+Connection ~ 5600 7050
+Wire Wire Line
+	4400 4250 4400 4550
+Connection ~ 4400 4250
+Wire Wire Line
+	6350 3450 6350 4350
+Connection ~ 6350 4350
+Wire Wire Line
+	6350 4350 9200 4350
+Wire Wire Line
+	4300 3100 4600 3100
+Wire Wire Line
+	4300 3200 4500 3200
+Wire Wire Line
+	4300 3300 4400 3300
+Wire Wire Line
+	4300 4350 5750 4350
+$Comp
+L ADA_CHARLIE:ADA_CHARLIE U?
+U 1 1 5E23A680
+P 3550 2800
+F 0 "U?" H 3550 3765 50  0000 C CNN
+F 1 "ADA_CHARLIE" H 3550 3674 50  0000 C CNN
+F 2 "MODULE" H 3550 2800 50  0001 C CNN
+F 3 "DOCUMENTATION" H 3550 2800 50  0001 C CNN
+	1    3550 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 3400 4300 4350
+Connection ~ 9150 3400
+Wire Wire Line
+	9150 3400 9100 3400
+Connection ~ 9150 3300
+Wire Wire Line
+	9150 3300 9100 3300
+Connection ~ 9150 3200
+Wire Wire Line
+	9150 3200 9100 3200
+Connection ~ 9150 3100
+Wire Wire Line
+	9150 3100 9100 3100
+Wire Wire Line
+	7650 2300 7550 2300
+Wire Wire Line
+	7550 2300 7550 4250
+Connection ~ 7550 4250
+Wire Wire Line
+	7550 4250 9500 4250
+Wire Wire Line
+	4850 2350 4750 2350
+Wire Wire Line
+	4750 2350 4750 3950
+Connection ~ 4750 3950
+Wire Wire Line
+	4750 3950 7350 3950
+Wire Wire Line
+	2800 2300 2600 2300
+Wire Wire Line
+	2600 2300 2600 4050
+Wire Wire Line
+	2600 4050 4600 4050
+Connection ~ 4600 4050
+$EndSCHEMATC
