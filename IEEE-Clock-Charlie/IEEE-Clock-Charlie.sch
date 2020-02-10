@@ -14,10 +14,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_Module:Arduino_Nano_v3.x A1
+L MCU_Module:Arduino_Nano_v3.x N1
 U 1 1 5E1FF514
 P 5550 5700
-F 0 "A1" H 5550 4611 50  0000 C CNN
+F 0 "N1" H 5550 4611 50  0000 C CNN
 F 1 "Arduino_Nano_v3.x" H 5550 4520 50  0000 C CNN
 F 2 "Module:Arduino_Nano" H 5700 4750 50  0001 L CNN
 F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 5550 4700 50  0001 C CNN
@@ -286,7 +286,7 @@ U 1 1 5E42A0BE
 P 4600 3650
 F 0 "D1" V 4554 3718 50  0000 L CNN
 F 1 "SolderJumper_2_Open" V 4645 3718 50  0000 L CNN
-F 2 "" H 4600 3650 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 4600 3650 50  0001 C CNN
 F 3 "~" H 4600 3650 50  0001 C CNN
 	1    4600 3650
 	0    1    1    0   
@@ -323,7 +323,7 @@ U 1 1 5E44F22C
 P 4500 3650
 F 0 "C1" V 4454 3718 50  0000 L CNN
 F 1 "SolderJumper_2_Open" V 4545 3718 50  0000 L CNN
-F 2 "" H 4500 3650 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 4500 3650 50  0001 C CNN
 F 3 "~" H 4500 3650 50  0001 C CNN
 	1    4500 3650
 	0    1    1    0   
@@ -361,9 +361,9 @@ $Comp
 L Jumper:SolderJumper_2_Open C2
 U 1 1 5E462E54
 P 7350 3600
-F 0 "C2" V 7304 3668 50  0000 L CNN
-F 1 "SolderJumper_2_Open" V 7395 3668 50  0000 L CNN
-F 2 "" H 7350 3600 50  0001 C CNN
+F 0 "C2" V 7400 3450 50  0000 L CNN
+F 1 "SolderJumper_2_Open" V 7250 2750 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 7350 3600 50  0001 C CNN
 F 3 "~" H 7350 3600 50  0001 C CNN
 	1    7350 3600
 	0    1    1    0   
@@ -376,9 +376,9 @@ $Comp
 L Jumper:SolderJumper_2_Open D2
 U 1 1 5E46EEEF
 P 7450 3600
-F 0 "D2" V 7404 3668 50  0000 L CNN
-F 1 "SolderJumper_2_Open" V 7495 3668 50  0000 L CNN
-F 2 "" H 7450 3600 50  0001 C CNN
+F 0 "D2" V 7500 3650 50  0000 L CNN
+F 1 "SolderJumper_2_Open" V 7350 3700 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 7450 3600 50  0001 C CNN
 F 3 "~" H 7450 3600 50  0001 C CNN
 	1    7450 3600
 	0    1    1    0   
@@ -416,7 +416,7 @@ U 1 1 5E48B29A
 P 10000 3550
 F 0 "C3" V 9954 3618 50  0000 L CNN
 F 1 "SolderJumper_2_Open" V 10045 3618 50  0000 L CNN
-F 2 "" H 10000 3550 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10000 3550 50  0001 C CNN
 F 3 "~" H 10000 3550 50  0001 C CNN
 	1    10000 3550
 	0    1    1    0   
@@ -427,7 +427,7 @@ U 1 1 5E49264D
 P 10100 3550
 F 0 "D3" V 10054 3618 50  0000 L CNN
 F 1 "SolderJumper_2_Open" V 10145 3618 50  0000 L CNN
-F 2 "" H 10100 3550 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 3550 50  0001 C CNN
 F 3 "~" H 10100 3550 50  0001 C CNN
 	1    10100 3550
 	0    1    1    0   
@@ -455,7 +455,7 @@ U 1 1 5E4B3AD7
 P 7550 2750
 F 0 "A3" V 7504 2818 50  0000 L CNN
 F 1 "SolderJumper_2_Open" V 7595 2818 50  0000 L CNN
-F 2 "" H 7550 2750 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 7550 2750 50  0001 C CNN
 F 3 "~" H 7550 2750 50  0001 C CNN
 	1    7550 2750
 	0    1    1    0   
@@ -478,7 +478,7 @@ U 1 1 5E4C30B6
 P 4750 2750
 F 0 "A2" V 4704 2818 50  0000 L CNN
 F 1 "SolderJumper_2_Open" V 4795 2818 50  0000 L CNN
-F 2 "" H 4750 2750 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 4750 2750 50  0001 C CNN
 F 3 "~" H 4750 2750 50  0001 C CNN
 	1    4750 2750
 	0    1    1    0   
@@ -496,7 +496,7 @@ U 1 1 5E4D2A20
 P 2000 3300
 F 0 "A1" V 1954 3368 50  0000 L CNN
 F 1 "SolderJumper_2_Open" V 2045 3368 50  0000 L CNN
-F 2 "" H 2000 3300 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 2000 3300 50  0001 C CNN
 F 3 "~" H 2000 3300 50  0001 C CNN
 	1    2000 3300
 	0    1    1    0   
