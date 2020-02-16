@@ -40,3 +40,46 @@ D18   --> D111
 D19   --> D112
 D20   --> D113
 -----------------------------------------------------------------
+
+
+   ---- Transcoding 'D:\Github\IEEE-Clock-Charlie\output\IEEE-Clock-Charlie-PTH.drl' ----   Sun Feb 09 22:22:17 2020
+
+T1   --> T2
+T2   --> T3
+T3   --> T4
+T4   --> T5
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'D:\Github\IEEE-Clock-Charlie\output\IEEE-Clock-Charlie-B_Cu.gbr' ----   Sun Feb 09 22:22:17 2020
+
+D11   --> D100
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'D:\Github\IEEE-Clock-Charlie\output\IEEE-Clock-Charlie-B_Mask.gbr' ----   Sun Feb 09 22:22:17 2020
+
+D10   --> D101
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'D:\Github\IEEE-Clock-Charlie\output\IEEE-Clock-Charlie-B_SilkS.gbr' ----   Sun Feb 09 22:22:17 2020
+
+D10   --> D102
+D11   --> D103
+D12   --> D104
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'D:\Github\IEEE-Clock-Charlie\output\IEEE-Clock-Charlie-Edge_Cuts.gbr' ----   Sun Feb 09 22:22:17 2020
+
+D10   --> D105
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'D:\Github\IEEE-Clock-Charlie\output\IEEE-Clock-Charlie-F_Cu.gbr' ----   Sun Feb 09 22:22:17 2020
+
+D10   --> D106
+D11   --> D107
+D12   --> D108
+-----------------------------------------------------------------
