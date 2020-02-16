@@ -1,6 +1,6 @@
 #include <Adafruit_IS31FL3731.h>
 #include <U8g2_for_Adafruit_GFX.h>
-
+#include <Fonts/FreeMono12pt7b.h>
 
 
 #define ROT_A_PIN (8)
@@ -13,6 +13,68 @@ Adafruit_IS31FL3731 displays[DISPLAY_COUNT];
 
 U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;
 
+U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx2;
+
+
+class TrippleScreen : public Adafruit_GFX {
+ public:
+  TrippleScreen(uint8_t x=((3*16)+4), uint8_t y=9); 
+  //bool begin();
+  void drawPixel(int16_t x, int16_t y, uint16_t color);
+  void clear(void); // Call to start a new frame
+  void show(void);   // Call to display the most recently drawn frame
+
+ protected:
+  byte frame;
+
+};
+
+
+TrippleScreen::TrippleScreen(uint8_t width, uint8_t height) : Adafruit_GFX(width, height) {
+}
+
+void TrippleScreen::show(void) {
+
+  for (auto d : displays ) {
+
+    d.displayFrame( frame );
+    
+  }
+}
+
+void TrippleScreen::drawPixel(int16_t x, int16_t y, uint16_t color) {
+  
+  if ( x < 16 ) {
+
+    displays[2].drawPixel( x , y , color );
+
+  } else if ( x>=18 && x < (18+16) ) {
+
+    displays[1].drawPixel( x-18 , y , color );
+    
+  } else if ( x>=36 && x < (36+16) ) {
+
+    displays[0].drawPixel( x-36 , y , color );
+    
+  }    
+  
+}
+
+void TrippleScreen::clear() {
+
+  frame++;
+
+  if (frame>7) frame=0;
+
+  for( auto &d : displays ) {
+    d.setFrame(frame);
+    d.clear();
+  }
+  
+}
+
+
+TrippleScreen trippleScreen;
 
 void swapFrame( Adafruit_IS31FL3731 &display ) {
 
@@ -43,18 +105,42 @@ byte buttonPushed() {
 
 }
 
-void ieee( Adafruit_IS31FL3731 &d ) {
+void circles() {
 
+  trippleScreen.clear();
+
+  while ( !buttonPushed() );
   
-  Adafruit_IS31FL3731 &d0 = displays[0];
-  Adafruit_IS31FL3731 &d1 = displays[1];
-  Adafruit_IS31FL3731 &d2 = displays[2];
+  static byte r=1;
 
+  while ( !buttonPushed() ) {
+  
+    trippleScreen.drawCircle( (3*16 + 4)/2  , 4 , r , 128 );
+
+    delay(20);
+
+    trippleScreen.drawCircle( (3*16 + 4)/2  , 4 , r-1 , 0 );
+    
+
+    r++;
+
+    if (r>40) r=1;
+    
+
+  }  
+}
+
+void ieee( TrippleScreen &d ) {
+
+
+  d.setFont();
+  d.setRotation(0);
   d.setTextWrap(0);
     
   static byte step=0;
 
-  static char *ieee = "   IEEE Spectrum";
+  static char *ieee = "          IEEE Spectrum";
+  
 /*
   while (1) { 
 
@@ -68,23 +154,23 @@ void ieee( Adafruit_IS31FL3731 &d ) {
 
   while (1) {
 
-      d.fillScreen(0);
+      d.clear();
       d.setCursor( 0 - step , 1 );
       d.print( ieee);
 
-      swapFrame( d );
+      d.show();
+      
       delay(20);
 
       step++;
 
-      if (step>100) step=0;
+      if (step>140) step=0;
 
       if (buttonPushed()) return;
       
   }
   
   
-  while (!buttonPushed());  
 }
 
 
@@ -112,24 +198,18 @@ void swirl(Adafruit_IS31FL3731 &ledmatrix ) {
 
 void pulseCount() {
 
+  Adafruit_IS31FL3731 &display = displays[0]; 
+
+  u8g2_for_adafruit_gfx.begin(display);                 // connect u8g2 procedures to Adafruit GFX
+  
+  
+
   u8g2_for_adafruit_gfx.setFont(u8g2_font_8x13_me  );  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
   u8g2_for_adafruit_gfx.setFontMode(1);                 // use u8g2 transparent mode (this is default)
   u8g2_for_adafruit_gfx.setFontDirection(0);            // left to right (this is default)
 
-  Adafruit_IS31FL3731 &display = displays[0]; 
-  
-
-  // Clear all the display frames
-  for( byte i=0; i<8; i++ ) {
-    
-    display.setFrame(i);
-    display.fillScreen(0);
-
-    
-  }
 
   u8g2_for_adafruit_gfx.setForegroundColor(128);      // apply Adafruit GFX color  
-
 
   static byte i=0;
   
@@ -140,10 +220,14 @@ void pulseCount() {
     if (i==100) i=0;
       
     byte bright = 255;
+
+    byte f=0;
   
     while (bright) {
+
+      display.setFrame(f);
       
-      display.fillScreen(0);
+      display.clear();
       
       u8g2_for_adafruit_gfx.setForegroundColor(bright);      // apply Adafruit GFX color  
       
@@ -164,14 +248,163 @@ void pulseCount() {
      // u8g2_for_adafruit_gfx.print(F("Umlaut ÄÖÜ"));            // UTF-8 string with german umlaut chars
     //  display.display();                                    // make everything visible
     
-      swapFrame( display );
+      display.displayFrame(f);
       delay(10);
   
       bright /=2;
 
+      f++;
+      if (f==8) f=0;
+
       if (buttonPushed()) return;
     }  
 
+  }
+  
+}
+
+// Returns when button pushed
+
+void fastCount() {
+
+  
+  Adafruit_IS31FL3731 &display = displays[1]; 
+
+  u8g2_for_adafruit_gfx.begin( display );
+
+  u8g2_for_adafruit_gfx.setFont(u8g2_font_profont10_mn   );  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
+  u8g2_for_adafruit_gfx.setFontMode(1);                 // use u8g2 transparent mode (this is default)
+  u8g2_for_adafruit_gfx.setFontDirection(0);            // left to right (this is default)
+  
+  // Clear all the display frames
+  for( byte i=0; i<8; i++ ) {
+    
+    display.setFrame(i);
+    display.fillScreen(0);
+
+    
+  }
+
+  u8g2_for_adafruit_gfx.setForegroundColor(128);      // apply Adafruit GFX color  
+
+
+  static unsigned int i=0;
+  
+  while (1) {
+    
+    i++;
+  
+    if (i==1000) i=0;
+            
+    display.clear();
+      
+
+    u8g2_for_adafruit_gfx.setCursor(1,6);                // start writing at this position
+    //if (i<100) u8g2_for_adafruit_gfx.print('0');
+
+    if (i<100) {
+       u8g2_for_adafruit_gfx.print('0');       
+    }
+      
+    if (i<10) {
+       u8g2_for_adafruit_gfx.print('0');       
+    }
+      
+    u8g2_for_adafruit_gfx.print(i );
+
+    
+    byte fm = ( i % 100 );
+    byte fx = fm / (100/16);
+
+    for( byte k=0; k < fx  ; k++ ) {
+        display.drawPixel( k , 7 , 32 );
+    }    
+    
+    byte sx = i / (1000/16);
+
+    for( byte k=0; k < sx  ; k++ ) {
+        display.drawPixel( k , 8 ,  32 );
+    }    
+
+    swapFrame( display );
+  
+
+    if (buttonPushed()) return;
+
+  }
+  
+}
+
+
+static uint8_t fadeSteps[] = { 0 , 1, 2, 3, 4, 6, 8, 10, 15, 20, 30, 40, 60 , 90 };
+
+
+void fader() {
+
+  
+  Adafruit_IS31FL3731 &display = displays[2]; 
+
+  u8g2_for_adafruit_gfx.begin(display);                 // connect u8g2 procedures to Adafruit GFX
+  
+
+  u8g2_for_adafruit_gfx2.setFont( u8g2_font_logisoso16_tn     );  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
+  u8g2_for_adafruit_gfx2.setFontMode(1);                 // use u8g2 transparent mode (this is default)
+  u8g2_for_adafruit_gfx2.setFontDirection(1);            // left to right (this is default)
+  
+  // Clear all the display frames
+  for( byte i=0; i<8; i++ ) {
+    
+    display.setFrame(i);
+    display.fillScreen(0);
+
+    
+  }
+
+    display.setFrame(0);
+    display.displayFrame(0);
+  
+
+  u8g2_for_adafruit_gfx2.setForegroundColor(128);      // apply Adafruit GFX color  
+
+
+  static byte last=0;
+  static byte next=1;
+
+  byte f =0;
+
+  while (1) {
+    
+    for( byte fade =0 ; fade< 14 ; fade ++ ) {
+
+      display.setFrame(f);
+      display.clear();
+
+      u8g2_for_adafruit_gfx2.setForegroundColor(fadeSteps[13-fade]);      // apply Adafruit GFX color  
+      u8g2_for_adafruit_gfx2.setCursor(-1,0);                              // start writing at this position      
+      u8g2_for_adafruit_gfx2.print(last);   
+
+      u8g2_for_adafruit_gfx2.setForegroundColor(fadeSteps[fade]);      // apply Adafruit GFX color  
+      u8g2_for_adafruit_gfx2.setCursor(-1,0);                              // start writing at this position      
+      u8g2_for_adafruit_gfx2.print(next);   
+      
+      display.displayFrame(f);
+      delay(10);
+
+      f++;
+      if (f==8) f=0;
+      
+      if (buttonPushed()) return;
+    }
+
+    last=next;
+    next++;
+    if (next==10) next=0;
+
+    for(byte p=0;p<20;p++) {
+      if (buttonPushed()) return;
+      delay(10);      
+    }
+    
   }
   
 }
@@ -202,6 +435,10 @@ void setup() {
   u8g2_for_adafruit_gfx.setFontDirection(0);            // left to right (this is default)
 
   u8g2_for_adafruit_gfx.setForegroundColor(128);      // apply Adafruit GFX color  
+
+
+  u8g2_for_adafruit_gfx2.begin( displays[2]);
+  
     
 }
 
@@ -209,12 +446,25 @@ void setup() {
 
 void loop() {  
 
+  ieee( trippleScreen );
+
+  trippleScreen.clear();
+  trippleScreen.show();
+
+
+  trippleScreen.clear();
+  trippleScreen.show();
+
   pulseCount();
 
+  fastCount();  
 
-  swirl( displays[1] );
+  fader();
+  
+  //circles();
 
-  ieee( displays[2]);
+  //swirl( displays[1] );
 
+ 
 
 } 
